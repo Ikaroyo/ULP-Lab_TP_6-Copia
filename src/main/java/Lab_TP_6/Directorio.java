@@ -1,7 +1,5 @@
 package Lab_TP_6;
 
-import java.util.List;
-
 public class Directorio {
 
     private List<numeroCliente> contacto;

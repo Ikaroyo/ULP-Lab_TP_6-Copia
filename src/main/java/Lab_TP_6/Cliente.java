@@ -13,6 +13,5 @@ public class Cliente {
     private String direccion;
 
     public Cliente(long p_dni, String p_nombre, String p_apellido, String p_ciudad, String p_direccion) {
-        
     }
 }
