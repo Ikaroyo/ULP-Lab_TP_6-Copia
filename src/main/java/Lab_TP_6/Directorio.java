@@ -1,29 +1,62 @@
 package Lab_TP_6;
 
+import java.util.HashMap;
+
+import java.util.HashSet;
+import java.util.Set;
+
 public class Directorio {
 
-    private List<numeroCliente> contacto;
+    private final HashMap<Long, Cliente> Directorio;
 
-    public Directorio(long p_numTelefono, Cliente p_cliente) {
+    public Directorio() {
+        Directorio = new HashMap<>();
     }
 
-    public String agregarCliente(long p_numTelefono, long p_dni, String p_nombre, String p_apellido, String p_ciudad, String p_direccion) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
+
+    public void agregarCliente(long p_numTelefono, Cliente p_cliente) {
+        this.Directorio.put(p_numTelefono, p_cliente);
     }
 
-    public String buscarCliente(String p_apellido) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public Cliente buscarCliente(long p_telefono) {
+        return Directorio.get(p_telefono);
     }
 
-    public String buscarTelefono(String p_apellido) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public Set<Long> buscarTelefono(String p_apellido) {
+        /* create a Set of Longs */
+        Set<Long> telefonos = new HashSet<>();
+        /* iterate through the HashMap */
+        for (Long telefono : Directorio.keySet()) {
+            /* if the value is equal to the argument, add it to the Set */
+            if (Directorio.get(telefono).getApellido().equals(p_apellido)) {
+                telefonos.add(telefono);
+            }
+        }
+        /* return the Set */
+        return telefonos;
     }
 
-    public String buscarClientes(String p_ciudad) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
+    public Set<Cliente> buscarClientes(String p_ciudad) {
+        /* create a Set of longs and using iterators for each Client with getCiudad p_ciudad in Directorio */
+
+        Set<Cliente> clientes = new HashSet<>();
+
+        for (Cliente cliente : Directorio.values()) {
+            if (cliente.getCiudad().equals(p_ciudad)) {
+                clientes.add(cliente);
+            }
+        }
+        return clientes;
     }
 
-    public long borrarCliente(long p_dni) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
+
+
+    public void borrarCliente(long p_numTelefono) {
+
+        Directorio.remove(p_numTelefono);
+
     }
 }
