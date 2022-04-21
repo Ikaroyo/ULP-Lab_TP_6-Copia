@@ -24,22 +24,21 @@ public class Directorio {
     }
 
     public Set<Long> buscarTelefono(String p_apellido) {
-        /* create a Set of Longs */
+
         Set<Long> telefonos = new HashSet<>();
-        /* iterate through the HashMap */
+
         for (Long telefono : Directorio.keySet()) {
-            /* if the value is equal to the argument, add it to the Set */
+
             if (Directorio.get(telefono).getApellido().equals(p_apellido)) {
                 telefonos.add(telefono);
             }
         }
-        /* return the Set */
+
         return telefonos;
     }
 
 
     public Set<Cliente> buscarClientes(String p_ciudad) {
-        /* create a Set of longs and using iterators for each Client with getCiudad p_ciudad in Directorio */
 
         Set<Cliente> clientes = new HashSet<>();
 
@@ -50,8 +49,6 @@ public class Directorio {
         }
         return clientes;
     }
-
-
 
 
     public void borrarCliente(long p_numTelefono) {
